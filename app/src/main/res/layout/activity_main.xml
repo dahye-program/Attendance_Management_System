@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F1E9ED"
     android:orientation="vertical"
     android:padding="20dp">
@@ -20,7 +21,8 @@
         android:layout_gravity="center"
         android:text="출결관리시스템"
         android:textColor="#000000"
-        android:textSize="55dp" />
+        android:textSize="55dp"
+        android:layout_marginBottom="20dp"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
@@ -42,6 +44,12 @@
             android:layout_height="wrap_content"
             android:text="회원"
             android:textSize="30dp" />
-
     </LinearLayout>
+    <ImageView
+        android:layout_marginTop="100dp"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"/>
+
+
 </LinearLayout>
