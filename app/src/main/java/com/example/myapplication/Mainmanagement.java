@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Mainmanagement extends AppCompatActivity {
     EditText mname;
@@ -23,19 +24,21 @@ public class Mainmanagement extends AppCompatActivity {
         mname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mname.setText("");
             }
         });
         mnum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mnum.setText("");
             }
         });
         mcheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(mname.getText().toString().equals("")||mnum.getText().toString().equals("")){
+                    Toast.makeText(Mainmanagement.this,"입력 제대로 하세요!!",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
