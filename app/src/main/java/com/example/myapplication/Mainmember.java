@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Mainmember extends AppCompatActivity {
     EditText memname;
@@ -35,7 +36,9 @@ public class Mainmember extends AppCompatActivity {
         memcheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(memname.getText().toString().equals("")||memnum.getText().toString().equals("")){
+                    Toast.makeText(Mainmember.this,"입력 제대로 하세요!!",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
