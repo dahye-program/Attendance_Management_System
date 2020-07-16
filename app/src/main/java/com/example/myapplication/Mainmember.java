@@ -24,13 +24,12 @@ public class Mainmember extends AppCompatActivity {
         memname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                memname.setText("");
+
             }
         });
         memnum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                memnum.setText("");
             }
         });
         memcheck.setOnClickListener(new View.OnClickListener() {

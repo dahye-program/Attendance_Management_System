@@ -24,13 +24,12 @@ public class Mainmanagement extends AppCompatActivity {
         mname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mname.setText("");
+
             }
         });
         mnum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mnum.setText("");
             }
         });
         mcheck.setOnClickListener(new View.OnClickListener() {
