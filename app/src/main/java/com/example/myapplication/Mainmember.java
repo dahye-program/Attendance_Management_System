@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +38,10 @@ public class Mainmember extends AppCompatActivity {
             public void onClick(View view) {
                 if(memname.getText().toString().equals("")||memnum.getText().toString().equals("")){
                     Toast.makeText(Mainmember.this,"입력 제대로 하세요!!",Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Intent intent = new Intent(getApplicationContext(), member_generate_qrcode.class);
+                    startActivity(intent);
                 }
             }
         });
