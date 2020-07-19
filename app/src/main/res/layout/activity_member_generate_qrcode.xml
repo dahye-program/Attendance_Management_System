@@ -26,6 +26,7 @@
         android:padding="20dp">
 
         <Button
+            android:id="@+id/memattendance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -34,6 +35,7 @@
             android:textColor="#000000"
             android:textSize="45dp"/>
         <Button
+            android:id="@+id/memLeavework"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
