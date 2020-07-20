@@ -17,7 +17,6 @@
         android:textSize="55dp" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#F1E9ED"
@@ -44,5 +43,11 @@
             android:textSize="45dp"/>
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/memqrcodeImage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"/>
 </LinearLayout>
 
