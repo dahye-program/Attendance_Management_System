@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
 
     <application
@@ -12,6 +13,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".manager_scan_qrcode"></activity>
         <activity android:name=".member_generate_qrcode" />
+        <activity android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation"/>
         <activity android:name=".Mainmember" />
         <activity android:name=".Mainmanagement" />
         <activity android:name=".MainActivity">
