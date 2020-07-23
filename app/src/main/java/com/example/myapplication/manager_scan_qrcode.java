@@ -21,7 +21,7 @@ public class manager_scan_qrcode extends AppCompatActivity {
         qrScan = new IntentIntegrator(this);
         qrScan.setOrientationLocked(false); //default는 세로모드 휴대폰 방향에 따라 가로, 세로로 자동 변경
         qrScan.setPrompt("QR코드를 스캔합시다");
-        qrScan.initiateScan();
+        qrScan.initiateScan(); //스캐너
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);

@@ -13,7 +13,6 @@ public class Mainmanagement extends AppCompatActivity {
     EditText mname;
     EditText mnum;
     Button mcheck;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

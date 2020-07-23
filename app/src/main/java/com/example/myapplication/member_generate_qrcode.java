@@ -38,7 +38,7 @@ public class member_generate_qrcode extends AppCompatActivity {
                     // BitMatrix 는 contents(원하는 내용), format(바코드 포맷 형식), width(가로), height(세로)를 인자로 받음
                     BarcodeEncoder barcodEncoder = new BarcodeEncoder();
                     Bitmap bitmap = barcodEncoder.createBitmap(bitMatrix);
-                    iv.setImageBitmap(bitmap);
+                    iv.setImageBitmap(bitmap); //바코더인코더를 이용해 qr코드를 만들고 비트맵 이미지에 적용
             }catch(Exception e){}
             }
         });
