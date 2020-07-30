@@ -26,16 +26,16 @@ package com.example.myapplication;
 
 public class MainActivity extends AppCompatActivity {
     // public static int status;
-    Button managebtn;
-    Button memberbtn;
-    EditText edit;
+    Button managebtn; //관리자 선택 버튼
+    Button memberbtn; // 회원 선택 버튼
+    //EditText edit; // 뭐지?
     String myJSON;
 
     private static final String TAG_RESULTS="result";
-    private static final String TAG_NAME="name";
-    private static final String TAG_NUM="num";
+    private static final String TAG_NAME="name"; //이름
+    private static final String TAG_NUM="num"; //학번
 
-    JSONArray hedgehogmembers=null;
+    JSONArray hedgehogmembers=null; //json으로
 
     ArrayList<HashMap<String, String>>hedgehogList;
 
@@ -45,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) { //실행시켰을 때 제일 먼저 초기화되는 메소드
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        managebtn = (Button)findViewById(R.id.chosemanagebtn); 
+        managebtn = (Button)findViewById(R.id.chosemanagebtn);
         hedgehogList = new ArrayList<HashMap<String, String>>();
         getData("http://localhost/bringdata.php");
 
-        protected void showList () {
+        protected void showList(){
             try {
                 JSONObject jsonObj = new JSONObject(myJSON);
                 hedgehogmembers = jsonObj.getJSONArray(TAG_RESULTS);
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        public void getData (String url){
+        public void getData(String url){
             class GetDataJSON extends AsyncTask<String, Void, String> {
                 @Override
                 protected String dolnBackground(String... params) {
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     BufferedReader bufferedReader = null;
                     try {
                         URL urI = new URL(uri);
-                        HttpURLConnection con = (HttpConnection) url.openConnection();
+                        HttpURLConnection con = (HttpConnection)url.openConnection();
                         StringBuilder sb = new StringBuilder();
 
                         bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -94,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
                     } catch (Exception e) {
                         return null;
                     }
+                }
+
+                @Override
+                protected String doInBackground(String... strings) {
+                    return null;
                 }
 
                 @Override
