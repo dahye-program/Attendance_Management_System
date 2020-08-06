@@ -39,12 +39,21 @@
             android:layout_marginRight="10dp"/>
 
         <Button
-            android:id="@+id/list"
+            android:id="@+id/chosememberbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="회원"
             android:textSize="30dp" />
     </LinearLayout>
+    <Button
+        android:id="@+id/signupbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="회원가입"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"/>
+
     <ImageView
         android:layout_marginTop="50dp"
         android:layout_width="400dp"
