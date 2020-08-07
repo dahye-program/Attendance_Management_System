@@ -91,7 +91,7 @@
         </RadioGroup>
     </LinearLayout>
         <Button
-            android:id="@+id/memberloginbtn"
+            android:id="@+id/signupcheckbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
