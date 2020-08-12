@@ -57,23 +57,23 @@ public class signup extends AppCompatActivity {
                 user_name_text=user_name.getText().toString();
                 user_number_text=user_number.getText().toString();
 
-
                 if(signupResult!=null){
                     Toast.makeText(signup.this,signupResult+" 회원가입", Toast.LENGTH_SHORT).show();
-                    if(signupResult=="관리자"){
+                    if(signupResult.equals("관리자")){
                         member_status="1";
-                    }else if(signupResult=="회원"){
+                    }else if(signupResult.equals("회원")){
                         member_status="0";
                     }
                     //String 형으로 입력받은 코드들을 서버로 전송
+
                     HttpConnectThread http = new HttpConnectThread(
-                            "http://192.168.0.104:80/addEmp.php",
-                            "id=" + member_status + "&name=" + user_name_text +
+                            "http://192.168.0.104:80/insert.php",
+                            "&id=" + member_status + "&name=" + user_name_text +
                                     "&number=" + user_number_text);
                     http.start();
                     String temp = http.GetResult();
                     //회원가입 완료 후 메인 화면으로 돌아가기
-                    Intent intent = new Intent(getApplicationContext(), Mainmember.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 }else{
                     Toast.makeText(signup.this,"관리자/회원 선택 해주세요",Toast.LENGTH_SHORT).show();
