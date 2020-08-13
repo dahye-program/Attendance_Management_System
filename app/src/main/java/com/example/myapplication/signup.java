@@ -53,7 +53,7 @@ public class signup extends AppCompatActivity {
         });
         check.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { //확인 버튼 누를시
                 user_name_text=user_name.getText().toString();
                 user_number_text=user_number.getText().toString();
 
@@ -68,7 +68,7 @@ public class signup extends AppCompatActivity {
 
                     HttpConnectThread http = new HttpConnectThread(
                             "http://192.168.0.104:80/insert.php",
-                            "&id=" + member_status + "&name=" + user_name_text +
+                            "&status=" + member_status + "&name=" + user_name_text +
                                     "&number=" + user_number_text);
                     http.start();
                     String temp = http.GetResult();
@@ -81,6 +81,4 @@ public class signup extends AppCompatActivity {
             }
         });
     }
-
-
 }

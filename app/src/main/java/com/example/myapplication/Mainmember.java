@@ -25,7 +25,6 @@ public class Mainmember extends AppCompatActivity {
         memname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
             }
         });
         memnum.setOnClickListener(new View.OnClickListener() {
