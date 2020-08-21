@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Mainmanagement extends AppCompatActivity {
+    public static String manageName, manageNum;
     EditText mname;
     EditText mnum;
     Button mcheck;
@@ -39,11 +40,10 @@ public class Mainmanagement extends AppCompatActivity {
                     Toast.makeText(Mainmanagement.this,"입력 제대로 하세요!!",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    String manageName, manageNum;
                     manageName = mname.getText().toString();        // editText 에서 관리자 이름 저장
                     manageNum = mnum.getText().toString();   // editText 에서 관리자 학번 저장
                     // TODO : 서버로 관리자의 학번,이름 전송
-                    Intent intent = new Intent(getApplicationContext(), manager_scan_qrcode.class);
+                    Intent intent = new Intent(getApplicationContext(), recording_output.class);
                     startActivity(intent);
                 }
             }

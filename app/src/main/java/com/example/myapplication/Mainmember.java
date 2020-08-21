@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Mainmember extends AppCompatActivity {
+    public static String studentName, studentNum;
     EditText memname;
     EditText memnum;
     Button memcheck;
@@ -39,8 +40,8 @@ public class Mainmember extends AppCompatActivity {
                     Toast.makeText(Mainmember.this,"입력 제대로 하세요!!",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    String name, studentNum;
-                    name = memname.getText().toString();        // editText 에서 회원 이름 저장
+
+                    studentName = memname.getText().toString();        // editText 에서 회원 이름 저장
                     studentNum = memnum.getText().toString();   // editText 에서 회원 학번 저장
                     // TODO : 서버로 회원의 학번, 이름 전송
                     Intent intent = new Intent(getApplicationContext(), member_generate_qrcode.class);

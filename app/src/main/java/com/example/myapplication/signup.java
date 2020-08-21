@@ -58,12 +58,12 @@ public class signup extends AppCompatActivity {
                 user_number_text=user_number.getText().toString();
 
                 if(signupResult!=null){
-                    Toast.makeText(signup.this,signupResult+" 회원가입", Toast.LENGTH_SHORT).show();
                     if(signupResult.equals("관리자")){
                         member_status="1";
                     }else if(signupResult.equals("회원")){
                         member_status="0";
                     }
+                    Toast.makeText(signup.this,signupResult+" 회원가입", Toast.LENGTH_SHORT).show();
                     //String 형으로 입력받은 코드들을 서버로 전송
 
                     HttpConnectThread http = new HttpConnectThread(
