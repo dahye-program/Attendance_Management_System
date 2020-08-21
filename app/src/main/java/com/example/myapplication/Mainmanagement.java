@@ -42,6 +42,12 @@ public class Mainmanagement extends AppCompatActivity {
                 else{
                     manageName = mname.getText().toString();        // editText 에서 관리자 이름 저장
                     manageNum = mnum.getText().toString();   // editText 에서 관리자 학번 저장
+                    HttpConnectThread http = new HttpConnectThread(
+                            "http://192.168.0.104:80/login_manager.php",
+                            "&status=" + member_status + "&name=" + manageName+
+                                    "&number=" + manageNum);
+                    http.start();
+                    String temp = http.GetResult();
                     // TODO : 서버로 관리자의 학번,이름 전송
                     Intent intent = new Intent(getApplicationContext(), recording_output.class);
                     startActivity(intent);
