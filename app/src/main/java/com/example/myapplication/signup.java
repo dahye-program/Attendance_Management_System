@@ -13,13 +13,13 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class signup extends AppCompatActivity {
+    public static String member_status;
     RadioButton managebtn;
     EditText user_name;
     EditText user_number;
     RadioButton membtn;
     RadioGroup radioGroup;
     Button check;
-    String member_status;
     String user_name_text;
     String user_number_text;
     String signupResult;

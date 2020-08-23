@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import static com.example.myapplication.signup.member_status;
+
 public class Mainmember extends AppCompatActivity {
     public static String studentName, studentNum;
     EditText memname;
@@ -43,14 +45,19 @@ public class Mainmember extends AppCompatActivity {
                     studentName = memname.getText().toString();        // editText 에서 회원 이름 저장
                     studentNum = memnum.getText().toString();   // editText 에서 회원 학번 저장
                     HttpConnectThread http = new HttpConnectThread(
-                            "http://192.168.0.104:80/login_member.php",
+                            "http://192.168.0.104:80/login.php",
                             "&status=" + member_status + "&name=" + studentName +
                                     "&number=" + studentNum);
                     http.start();
                     String temp = http.GetResult();
                     // TODO : 서버로 회원의 학번, 이름 전송
-                    Intent intent = new Intent(getApplicationContext(), member_generate_qrcode.class);
-                    startActivity(intent);
+                    if(temp=="1"){
+                        Toast.makeText(Mainmember.this,"ㄹㅗㄱㅡㅇㅣㄴㅅㅓㅇㄱㅗㅇ",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), member_generate_qrcode.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(Mainmember.this,"ㄹㅗㄱㅡㅇㅣㄴ ㅅㅣㄹㅍㅐ",Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
