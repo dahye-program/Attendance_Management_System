@@ -4,18 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import static com.example.myapplication.signup.member_status;
 
 public class Mainmanagement extends AppCompatActivity {
     public static String manageName, manageNum;
     EditText mname;
     EditText mnum;
     Button mcheck;
+    String member_status = "1";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,14 +50,17 @@ public class Mainmanagement extends AppCompatActivity {
                             "&status=" + member_status + "&name=" + manageName+
                                     "&number=" + manageNum);
                     http.start();
+                    for(int i=0;i<5000;i++){
+                        Log.i("TEST : ", "test");
+                    }
                     String temp = http.GetResult();
                     // TODO : 서버로 관리자의 학번,이름 전송
-                    if(temp=="1"){
-                        Toast.makeText(Mainmanagement.this,"ㄹㅗㄱㅡㅇㅣㄴㅅㅓㅇㄱㅗㅇ",Toast.LENGTH_LONG).show();
+                    if(temp.equals("1\n")){
+                        Toast.makeText(Mainmanagement.this,"로그인 성공",Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), recording_output.class);
                         startActivity(intent);
                     }else{
-                        Toast.makeText(Mainmanagement.this,"ㄹㅗㄱㅡㅇㅣㄴ ㅅㅣㄹㅍㅐ",Toast.LENGTH_LONG).show();
+                        Toast.makeText(Mainmanagement.this,"로그인 실패",Toast.LENGTH_LONG).show();
                     }
                 }
             }

@@ -4,18 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import static com.example.myapplication.signup.member_status;
 
 public class Mainmember extends AppCompatActivity {
     public static String studentName, studentNum;
     EditText memname;
     EditText memnum;
     Button memcheck;
+    String member_status = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +50,18 @@ public class Mainmember extends AppCompatActivity {
                             "&status=" + member_status + "&name=" + studentName +
                                     "&number=" + studentNum);
                     http.start();
+                    for(int i=0;i<5000;i++){
+                        Log.i("TEST : ", "test");
+                    }
                     String temp = http.GetResult();
+
                     // TODO : 서버로 회원의 학번, 이름 전송
-                    if(temp=="1"){
-                        Toast.makeText(Mainmember.this,"ㄹㅗㄱㅡㅇㅣㄴㅅㅓㅇㄱㅗㅇ",Toast.LENGTH_LONG).show();
+                    if(temp.equals("1\n")){
+                        Toast.makeText(Mainmember.this,"로그인 성공",Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), member_generate_qrcode.class);
                         startActivity(intent);
                     }else{
-                        Toast.makeText(Mainmember.this,"ㄹㅗㄱㅡㅇㅣㄴ ㅅㅣㄹㅍㅐ",Toast.LENGTH_LONG).show();
+                        Toast.makeText(Mainmember.this,"로그인 실패",Toast.LENGTH_LONG).show();
                     }
                 }
             }
