@@ -56,8 +56,8 @@ public class Mainmanagement extends AppCompatActivity {
                     String temp = http.GetResult();
                     // TODO : 서버로 관리자의 학번,이름 전송
                     if(temp.equals("1\n")){
-                        Toast.makeText(Mainmanagement.this,"로그인 성공",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), recording_output.class);
+                        Toast.makeText(Mainmanagement.this,"인증이 필요합니다",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), managerCertified.class);
                         startActivity(intent);
                     }else{
                         Toast.makeText(Mainmanagement.this,"로그인 실패",Toast.LENGTH_LONG).show();
