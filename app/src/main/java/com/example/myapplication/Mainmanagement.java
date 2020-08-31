@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,9 +58,30 @@ public class Mainmanagement extends AppCompatActivity {
                     String temp = http.GetResult();
                     // TODO : 서버로 관리자의 학번,이름 전송
                     if(temp.equals("1\n")){
-                        Toast.makeText(Mainmanagement.this,"인증이 필요합니다",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), managerCertified.class);
-                        startActivity(intent);
+                        final EditText edittext = new EditText(Mainmanagement.this);
+
+                        AlertDialog.Builder dlg = new AlertDialog.Builder(Mainmanagement.this);
+                        dlg.setTitle("관리자 인증");
+                        dlg.setView(edittext);
+                        dlg.setPositiveButton("입력", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                String userpw = edittext.getText().toString();
+                                HttpConnectThread http = new HttpConnectThread(
+                                        "http://192.168.0.104:80/manager.php",
+                                        "$userpw="+userpw);
+                                http.start();
+                                String temp_check=http.GetResult();
+                                if(temp_check.equals("1\n")){
+                                    Toast.makeText(Mainmanagement.this,"로그인 성공",Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(getApplicationContext(), recording_output.class);
+                                    startActivity(intent);
+                                }
+                                else{
+                                    Toast.makeText(Mainmanagement.this,"인증번호가 틀립니다.",Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
                     }else{
                         Toast.makeText(Mainmanagement.this,"로그인 실패",Toast.LENGTH_LONG).show();
                     }
