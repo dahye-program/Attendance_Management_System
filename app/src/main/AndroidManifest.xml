@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".managerCertified"></activity>
         <activity android:name=".memberRecord" />
         <activity android:name=".recording_output" />
         <activity android:name=".signup" />

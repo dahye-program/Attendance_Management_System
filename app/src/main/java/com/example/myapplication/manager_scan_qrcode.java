@@ -27,22 +27,27 @@ public class manager_scan_qrcode extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if(result!=null){
-            if(result.getContents()==null){ //읽은 qr코드 값이 NULL이 아니면,
+            if(result.getContents()==null){
                 Toast.makeText(this,"Cancelled", Toast.LENGTH_LONG).show();
                 //todo
-            }else{
+            }else{ //읽은 qr코드 값이 NULL이 아니면,
                 String contents = result.getContents().toString();
                 Toast.makeText(this,"Scanned:"+result.getContents(),Toast.LENGTH_LONG).show();
                 super.onActivityResult(requestCode,resultCode,data);
                 // 스캔한 결과값 받아와서 처리하는 함수
                 HttpConnectThread http = new HttpConnectThread(
-                        "http://192.168.0.104:80/insertQRdata.php",
+                        "http://192.168.0.104:80/insertQRdata.php", //QR코드 데이터 전송
                         "&userdata=" + contents);
                 http.start();
                 for(int i=0;i<5000;i++){
                     Log.i("TEST : ", "test");
                 }
                 String temp = http.GetResult();
+                if(temp.equals("New record create successfully")){
+                    Toast.makeText(this,"출/퇴근 기록 완료", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(),Mainmanagement.class);
+                    startActivity(intent);
+                }
             }
         }
     }
