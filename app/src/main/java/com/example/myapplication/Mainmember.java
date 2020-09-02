@@ -46,11 +46,11 @@ public class Mainmember extends AppCompatActivity {
                     studentName = memname.getText().toString();        // editText 에서 회원 이름 저장
                     studentNum = memnum.getText().toString();   // editText 에서 회원 학번 저장
                     HttpConnectThread http = new HttpConnectThread(
-                            "http://192.168.0.104:80/login.php",
+                            "http://192.168.0.101:80/login.php",
                             "&status=" + member_status + "&name=" + studentName +
                                     "&number=" + studentNum);
                     http.start();
-                    for(int i=0;i<5000;i++){
+                    for(int i=0;i<1000;i++){
                         Log.i("TEST : ", "test");
                     }
                     String temp = http.GetResult();

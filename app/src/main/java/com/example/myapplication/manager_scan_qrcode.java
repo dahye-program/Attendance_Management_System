@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -30,10 +31,18 @@ public class manager_scan_qrcode extends AppCompatActivity {
                 Toast.makeText(this,"Cancelled", Toast.LENGTH_LONG).show();
                 //todo
             }else{
+                String contents = result.getContents().toString();
                 Toast.makeText(this,"Scanned:"+result.getContents(),Toast.LENGTH_LONG).show();
                 super.onActivityResult(requestCode,resultCode,data);
                 // 스캔한 결과값 받아와서 처리하는 함수
-                //todo
+                HttpConnectThread http = new HttpConnectThread(
+                        "http://192.168.0.104:80/insertQRdata.php",
+                        "&userdata=" + contents);
+                http.start();
+                for(int i=0;i<5000;i++){
+                    Log.i("TEST : ", "test");
+                }
+                String temp = http.GetResult();
             }
         }
     }

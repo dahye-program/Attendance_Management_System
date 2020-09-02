@@ -19,6 +19,7 @@ public class Mainmanagement extends AppCompatActivity {
     EditText mnum;
     Button mcheck;
     String member_status = "1";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,26 +42,24 @@ public class Mainmanagement extends AppCompatActivity {
         mcheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mname.getText().toString().equals("")||mnum.getText().toString().equals("")){
-                    Toast.makeText(Mainmanagement.this,"입력 제대로 하세요!!",Toast.LENGTH_LONG).show();
-                }
-                else{
+                if (mname.getText().toString().equals("") || mnum.getText().toString().equals("")) {
+                    Toast.makeText(Mainmanagement.this, "입력 제대로 하세요!!", Toast.LENGTH_LONG).show();
+                } else {
                     manageName = mname.getText().toString();        // editText 에서 관리자 이름 저장
                     manageNum = mnum.getText().toString();   // editText 에서 관리자 학번 저장
                     HttpConnectThread http = new HttpConnectThread(
-                            "http://192.168.0.104:80/login.php",
-                            "&status=" + member_status + "&name=" + manageName+
+                            "http://192.168.0.101:80/login.php",
+                            "&status=" + member_status + "&name=" + manageName +
                                     "&number=" + manageNum);
                     http.start();
-                    for(int i=0;i<5000;i++){
+                    for (int i = 0; i < 3000; i++) {
                         Log.i("TEST : ", "test");
                     }
                     String temp = http.GetResult();
                     // TODO : 서버로 관리자의 학번,이름 전송
-                    if(temp.equals("1\n")){
-                        final EditText edittext = new EditText(Mainmanagement.this);
-
+                    if (temp.equals("1\n")) {
                         AlertDialog.Builder dlg = new AlertDialog.Builder(Mainmanagement.this);
+                        final EditText edittext = new EditText(Mainmanagement.this);
                         dlg.setTitle("관리자 인증");
                         dlg.setView(edittext);
                         dlg.setPositiveButton("입력", new DialogInterface.OnClickListener() {
@@ -68,22 +67,22 @@ public class Mainmanagement extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 String userpw = edittext.getText().toString();
                                 HttpConnectThread http = new HttpConnectThread(
-                                        "http://192.168.0.104:80/manager.php",
-                                        "$userpw="+userpw);
+                                        "http://192.168.0.101:80/manager.php",
+                                        "$userpw=" + userpw);
                                 http.start();
-                                String temp_check=http.GetResult();
-                                if(temp_check.equals("1\n")){
-                                    Toast.makeText(Mainmanagement.this,"로그인 성공",Toast.LENGTH_LONG).show();
+                                String temp_check = http.GetResult();
+                                if (temp_check.equals("1\n")) {
+                                    Toast.makeText(Mainmanagement.this, "로그인 성공", Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(getApplicationContext(), recording_output.class);
                                     startActivity(intent);
-                                }
-                                else{
-                                    Toast.makeText(Mainmanagement.this,"인증번호가 틀립니다.",Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(Mainmanagement.this, "인증번호가 틀립니다.", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
-                    }else{
-                        Toast.makeText(Mainmanagement.this,"로그인 실패",Toast.LENGTH_LONG).show();
+                        dlg.create().show();
+                    } else {
+                        Toast.makeText(Mainmanagement.this, "로그인 실패", Toast.LENGTH_LONG).show();
                     }
                 }
             }
