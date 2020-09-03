@@ -50,7 +50,7 @@ public class Mainmember extends AppCompatActivity {
                             "&status=" + member_status + "&name=" + studentName +
                                     "&number=" + studentNum);
                     http.start();
-                    for(int i=0;i<1000;i++){
+                    for(int i=0;i<8000;i++){
                         Log.i("TEST : ", "test");
                     }
                     String temp = http.GetResult();

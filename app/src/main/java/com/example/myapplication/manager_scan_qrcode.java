@@ -36,14 +36,14 @@ public class manager_scan_qrcode extends AppCompatActivity {
                 super.onActivityResult(requestCode,resultCode,data);
                 // 스캔한 결과값 받아와서 처리하는 함수
                 HttpConnectThread http = new HttpConnectThread(
-                        "http://192.168.0.104:80/insertQRdata.php", //QR코드 데이터 전송
+                        "http://192.168.0.101:80/insertQRdata.php", //QR코드 데이터 전송
                         "&userdata=" + contents);
                 http.start();
                 for(int i=0;i<5000;i++){
                     Log.i("TEST : ", "test");
                 }
-                String temp = http.GetResult();
-                if(temp.equals("New record create successfully")){
+                String temp_record = http.GetResult();
+                if(temp_record.equals("New record create successfully")){
                     Toast.makeText(this,"출/퇴근 기록 완료", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(),Mainmanagement.class);
                     startActivity(intent);

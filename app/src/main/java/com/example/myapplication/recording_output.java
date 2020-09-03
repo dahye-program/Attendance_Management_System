@@ -30,8 +30,8 @@ public class recording_output extends AppCompatActivity {
         recordShow.setOnClickListener(new View.OnClickListener() { // 관리자 모드에서 출/퇴근 기록 보기 버튼 클릭 시
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), memberRecord.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getApplicationContext(), memberRecord.class);
+                //startActivity(intent);
             }
         });
     }

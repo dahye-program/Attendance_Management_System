@@ -52,7 +52,7 @@ public class Mainmanagement extends AppCompatActivity {
                             "&status=" + member_status + "&name=" + manageName +
                                     "&number=" + manageNum);
                     http.start();
-                    for (int i = 0; i < 3000; i++) {
+                    for (int i = 0; i < 5000; i++) {
                         Log.i("TEST : ", "test");
                     }
                     String temp = http.GetResult();
@@ -68,8 +68,11 @@ public class Mainmanagement extends AppCompatActivity {
                                 String userpw = edittext.getText().toString();
                                 HttpConnectThread http = new HttpConnectThread(
                                         "http://192.168.0.101:80/manager.php",
-                                        "$userpw=" + userpw);
+                                        "&userPW=" + userpw);
                                 http.start();
+                                for (int j = 0; j < 5000; j++) {
+                                    Log.i("TEST : ", "test");
+                                }
                                 String temp_check = http.GetResult();
                                 if (temp_check.equals("1\n")) {
                                     Toast.makeText(Mainmanagement.this, "로그인 성공", Toast.LENGTH_LONG).show();
