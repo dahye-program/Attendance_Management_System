@@ -72,6 +72,8 @@ public class signup extends AppCompatActivity {
                                     "&number=" + user_number_text);
                     http.start();
                     String temp = http.GetResult();
+                    // TODO : 회원가입 실패 예외처리 필요함
+                    // TODO : 'temp' 값 이용하여 성공 실패 메시지 출력할 필요 있어보임.
                     //회원가입 완료 후 메인 화면으로 돌아가기
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
